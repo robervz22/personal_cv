@@ -1,0 +1,448 @@
+%! TeX program = lualatex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A clean template for an academic CV. This is a short summary version.
+%
+% Uses tabularx to create two column entries (date and job/edu/citation).
+% Defines commands to make adding entries simpler.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[9pt, letterpaper]{article}
+
+% Full Unicode support for non-ASCII characters
+\usepackage[utf8]{inputenc}
+
+% Useful aliases
+\newcommand{\UERJ}{UERJ}
+\newcommand{\UHM}{University of Hawai`i at M\={a}noa}
+\newcommand{\SOEST}{School of Ocean and Earth Science and Technology}
+\newcommand{\UHEARTH}{Department of Earth Sciences}
+\newcommand{\LIVEARTH}{Department of Earth, Ocean and Ecological Sciences}
+\newcommand{\LIVENV}{School of Environmental Sciences}
+\newcommand{\LIV}{University of Liverpool}
+
+% Identifying information
+\newcommand{\Title}{Curriculum Vit\ae\ Summary}
+\newcommand{\FirstName}{Roberto}
+\newcommand{\LastName}{Vasquez Martinez}
+\newcommand{\Initials}{R}
+\newcommand{\MyName}{Lic. \FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName, \Initials}}  % For citations
+\newcommand{\CelPhone}{\faIcon{mobile-alt} +52 (951) 401 4375}
+\newcommand{\Email}{\faIcon{envelope} roberto.vasquez@cimat.mx}
+% \newcommand{\PersonalWebsite}{www.leouieda.com}
+\newcommand{\LabWebsite}{https://www.cimat.mx/}
+\newcommand{\personalGitHub}{\href{https://github.com/robervz22}{\faIcon{github} robervz22}}
+% \newcommand{\ORCID}{0000-0001-6123-9515}
+\newcommand{\Address}{
+   S/N Jalisco St., Valenciana, Guanajuato, Guanajuato, 36240 - Mexico
+}
+
+% Languange Knowledge
+% \usepackage{xcolor}
+\newcount\languagecount
+\newcommand\languageknowledge[2]
+  {%
+    \hbox
+      {%
+        \makebox[1.4cm][l]{#1}%
+        \languagecount=0
+        \loop\ifnum\languagecount<#2
+          \advance\languagecount1
+          \textcolor{black}{$\star$}%
+        \repeat
+        \loop\ifnum\languagecount<5
+          \advance\languagecount1
+          \textcolor{gray}{$\star$}%
+        \repeat
+      }%
+  }
+
+
+% Names for citing coauthors
+\newcommand{\Graciela}{Gonzalez Farias, G}
+\newcommand{\Ulises}{Marquez Urbina, J U}
+\newcommand{\Rogelio}{Ramos Quiroga, R}
+\newcommand{\Ehyter}{Martin, Gonzalez, E M}
+\newcommand{\Kapioma}{Villarreal Haro, K}
+\newcommand{\Chris}{Sanchez Leon, C A}
+\newcommand{\Ivan}{Ortiz Arana, E I}
+\newcommand{\Jorge}{Cardenas Treviño, J A}
+% \newcommand{\Florian}{Wobbe, F}
+% \newcommand{\Walter}{Smith, WHF}
+% \newcommand{\Dongdong}{Tian, D}
+% \newcommand{\Bridget}{Smith-Konter, B}
+% \newcommand{\Eric}{Xu, X}
+% \newcommand{\David}{Sandwell, DT}
+% \newcommand{\Carla}{Braitenberg, C}
+% \newcommand{\Naomi}{Ussami, N}
+% \newcommand{\Manoel}{D'Agrella-Filho, MS}
+% \newcommand{\JB}{Silva, JBC}
+% \newcommand{\Dai}{Sales, DP}
+% \newcommand{\Figura}{Melo, FF}
+% \newcommand{\Dio}{Carlos, DU}
+% \newcommand{\BragaVale}{Braga, MA}
+% \newcommand{\YLi}{Li, Y}
+% \newcommand{\Angeli}{Angeli, G}
+% \newcommand{\Peres}{Peres, G}
+% \newcommand{\Everton}{Bomfim, EP}
+% \newcommand{\Eder}{Molina, E}
+% \newcommand{\Gomes}{Gomes, AAS}
+% \newcommand{\Santiago}{Soler, SR}
+% \newcommand{\Agustina}{Pesce, A}
+% \newcommand{\Gimenez}{Gimenez, ME}
+% \newcommand{\Kristoffer}{Hallam, KAT}
+% \newcommand{\Guangdong}{Zhao, G}
+% \newcommand{\Bo}{Chen, B}
+% \newcommand{\JLiu}{Liu, J}
+% \newcommand{\LChen}{Chen, L}
+% \newcommand{\RGuo}{Guo, R}
+% \newcommand{\MKaban}{Kaban, MK}
+% \newcommand{\Lindsey}{Heagy, LJ}
+% \newcommand{\Lion}{Krischer, L}
+% \newcommand{\Rene}{Gassmoeller, R}
+% \newcommand{\Bane}{Sullivan, CB}
+% \newcommand{\Jens}{Klump, JF}
+% \newcommand{\LBarba}{Barba, LA}
+% \newcommand{\JBazan}{Bazan, J}
+% \newcommand{\JBrown}{Brown, J}
+% \newcommand{\RGuimera}{Guimera, RV}
+% \newcommand{\MGymrek}{Gymrek, M}
+% \newcommand{\AHanna}{Alex Hanna}
+% \newcommand{\KHuff}{Huff, KD}
+% \newcommand{\DKatz}{Katz, DS}
+% \newcommand{\CMadan}{Madan, CR}
+% \newcommand{\KMoerman}{Moerman, KM}
+% \newcommand{\KNiemeyer}{Niemeyer, KE}
+% \newcommand{\JPoulson}{Poulson, JL}
+% \newcommand{\PPrins}{Prins, P}
+% \newcommand{\KRam}{Ram, K}
+% \newcommand{\ARokem}{Rokem, A}
+% \newcommand{\Arfon}{Smith, AM}
+% \newcommand{\GThiruvathukal}{Thiruvathukal, GK}
+% \newcommand{\KThyng}{Thyng, KM}
+% \newcommand{\BWilson}{Wilson, BE}
+% \newcommand{\Yehudi}{Yehudi, Y}
+% \newcommand{\Remi}{Rampin, R}
+% \newcommand{\Hugo}{van Kemenade, H}
+% \newcommand{\MattTurk}{Turk, M}
+% \newcommand{\Shapero}{Shapero, D}
+% \newcommand{\Anderson}{Banihirwe, A}
+% \newcommand{\Leeman}{Leeman, J}
+% \newcommand{\JEbbing}{Ebbing, J}
+% \newcommand{\AGuy}{Guy, A}
+% \newcommand{\JFarquharson}{Farquharson, J}
+% \newcommand{\AKushnir}{Kushnir, A}
+% \newcommand{\FWadsworth}{Wadsworth, F}
+% \newcommand{\LPerozzi}{Perozzi, L}
+% \newcommand{\MWieczorek}{Wieczorek, MA}
+% \newcommand{\LLi}{Li, L}
+
+
+% Template configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Disable hyphenation
+\usepackage[none]{hyphenat}
+
+% Control the font size
+ \usepackage{anyfontsize}
+
+% Icon fonts (requires using xelatex or luatex)
+\usepackage[fixed]{fontawesome5}
+\usepackage{academicons}
+
+% Template variables for styling
+\newcommand{\TablePad}{\vspace{-0.4cm}}
+\newcommand{\SoftwareTitle}[1]{{\bfseries #1}}
+\newcommand{\TableTitle}[1]{{\fontsize{10pt}{0}\selectfont \itshape #1}}
+
+% For fancy and multipage tables
+\usepackage{tabularx}
+\usepackage{ltablex}
+
+% Define a new environment to place all CV entries in a 2-column table.
+% Left column are the dates, right column the entries.
+\usepackage{environ}
+\NewEnviron{EntriesTable}{
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.07\textwidth}@{\hspace{0.03\textwidth}}p{0.90\textwidth}@{}}
+  \BODY
+\end{tabularx}
+}
+
+% Macros to add links and mark publications
+\newcommand{\DOI}[1]{doi:\href{https://doi.org/#1}{#1}}
+\newcommand{\DOILink}[1]{\href{https://doi.org/#1}{doi.org/#1}}
+\newcommand{\Website}[1]{\href{https://#1}{#1}}
+\newcommand{\Preprint}[1]{\newline Preprint: \faFilePdf\ \DOILink{#1}}
+\newcommand{\Youtube}[1]{\newline Recording: \faYoutube\, \href{https://www.youtube.com/watch?v=#1}{youtube.com/watch?v=#1}}
+\newcommand{\GitHub}[1]{\faGithub\ \href{https://github.com/#1}{github.com/#1}}
+\newcommand{\Role}[1]{\newline Role: \faUsers\ #1}
+\newcommand{\Slides}[1]{\newline Slides: \faTv\ \href{https://#1}{#1}}
+\newcommand{\SlidesDOI}[1]{\newline Slides: \faTv\ \DOILink{#1}}
+\newcommand{\PosterDOI}[1]{\newline Poster: \faImage\ \DOILink{#1}}
+\newcommand{\OA}{\aiOpenAccess}
+
+% Macros to set the year and duration on the left column
+\newcommand{\Duration}[2]{\fontsize{9pt}{0}\selectfont #1 -- #2}
+\newcommand{\Year}[1]{\fontsize{9pt}{0}\selectfont #1}
+\newcommand{\Ongoing}{on}
+\newcommand{\Future}{future}
+\newcommand{\Appointment}[4]{\textbf{#1} \newline #2 \newline #3 \newline #4}
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+% Set the page margins
+\usepackage[letterpaper,margin=0.9cm,includehead,headsep=5mm]{geometry}
+
+% To get the total page numbers (\pageref{LastPage})
+\usepackage{lastpage}
+
+% No indentation
+\setlength\parindent{0cm}
+
+% Increase the line spacing
+\renewcommand{\baselinestretch}{1.0}
+% and the spacing between rows in tables
+\renewcommand{\arraystretch}{1.2}
+
+% Remove space between items in itemize and enumerate
+\usepackage{enumitem}
+\setlist{nosep}
+
+% Use custom colors
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Set fonts (requires compilation with xelatex)
+\usepackage{fontspec}
+\setmainfont[%
+  Path = fonts/notoserif/,
+  UprightFont = NotoSerif-Regular,
+  BoldFont = NotoSerif-Bold,
+  ItalicFont = NotoSerif-Italic,
+  Extension = .ttf
+]{NotoSerif}
+
+% Set the spacing for sections
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\large\mdseries} % format
+  {} % label
+  {0pt} % separation (left separation for hang)
+  {} % text before title
+  [\titlerule] % text after title
+\titleformat{\subsection}
+  {\normalfont\mdseries} % format
+  {} % label
+  {0pt} % separation (left separation for hang)
+  {} % text before title
+
+% Disable number of sections. Use this instead of "section*" so that the sections still
+% appear as PDF bookmarks. Otherwise, would have to add the table of contents entries
+% manually.
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\fontsize{9pt}{10pt}\selectfont
+  \monthyear\today
+}
+\chead{
+  \fontsize{9pt}{10pt}\selectfont
+  \MyName
+  \hspace{0.2cm} -- \hspace{0.2cm}
+  \Title
+}
+\rhead{\fontsize{9pt}{10pt}\selectfont \thepage{} of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+
+% Metadata for the PDF output and control of hyperlinks
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+  pdftitle={\MyName\ - \Title},
+  pdfauthor={\MyName},
+  linkcolor=blue,
+  citecolor=blue,
+  filecolor=black,
+  urlcolor=MidnightBlue
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% No header for the first page
+\thispagestyle{empty}
+
+% Remove extra header space
+\vspace*{-2.75\baselineskip}
+
+\begin{minipage}[t]{0.7\textwidth}
+  {\fontsize{16pt}{0}\selectfont\MyName}
+\end{minipage}
+\begin{minipage}[t]{0.3\textwidth}
+  \begin{flushright}
+    Last updated: \monthyear\today
+  \end{flushright}
+\end{minipage}
+\\[-0.1cm]
+\rule{\textwidth}{1pt}
+\vspace{-0.75cm}
+\begin{flushleft}
+  \Address | Institution: \Website{\LabWebsite}\\
+  Email: \href{mailto:\Email}{\Email} |  \CelPhone | \personalGitHub 
+\end{flushleft}
+\vspace{-0.8cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Education \faBook}
+
+\begin{EntriesTable}
+\Year{2022--\Ongoing}  &
+  \textbf{MSc in Probability and Statistics}, Research Center in Mathematics (CIMAT), Mexico.
+
+  Currently studying 2nd Semester.\hfill Current GPA: \textbf{9.80/10}
+  \\
+  \Year{2017--2022}  &
+  \textbf{BSc in Mathematics}, University of Guanajuato, Mexico. \hfill
+  GPA: \textbf{9.80/10}
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Academic Events \faCubes}
+\begin{EntriesTable}
+  \Year{07/20} & \textbf{12th Summer in Statistics and Modeling in Infectious Diseases} (Washington, USA)
+
+  Participated in the course Stochastic Epidemic Models with Inference.
+  \\
+  \Year{07/20} & \textbf{25th Summer Institute in Statistical Genetics} (Washington, USA) 
+ 
+  Participated in the course Genetic Epidemiology and the course Multivariate Analysis for Genetic Data.
+\\
+  \Year{11/22} & \textbf{Workshop: Mathematical Applications in Biological Data Problems} (Morelia, Mexico)
+
+  Application of Topological Data Analysis on false positive detection of \textit{Clavibacter} metagenome. \href{https://github.com/robervz22/ccm-bioinfomatica-lab}{\faIcon{github}}
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Teaching \faGraduationCap}
+\begin{EntriesTable}
+  \Year{08/20 -- 12/20}& \textbf{Teaching assistant of course: Extreme Value Theory in Finance.} Course of MSc in Probability and Statistics, CIMAT.
+  \\
+  \Year{08/22 -- 12/22}& \textbf{Teaching assistant of course: Statistical Inference.} Course of MSc in Computational Statistics, CIMAT, Monterrey.
+  \\
+  \Year{01/23 -- on} & \textbf{Teaching assistant of course: Statistical Models.} Course of MSc in Probability and Statistics, CIMAT.
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Awards and Scholarships \faTrophy}
+\begin{EntriesTable}
+  \Year{2022} &\textbf{University of Guanajuato.} Awarded best student of 2017's generation. (Guanajuato, Mexico)\\
+
+                  & \textbf{Mexican Mathematical Olympiad.} Awarded with a bronze (2015) and silver (2016) medal in 
+                  National Contest.
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Talks \faChartArea}
+\begin{EntriesTable}
+  \Year{04/22}& \textbf{Gompertz Mixture with covariables for modeling COVID-19 pandemic.} CIMAT's summer school. Joint work with Dra. Graciela Gonzalez Farias.\\
+
+  \Year{08/22}& \textbf{Passing times of Cramer-Lundberg's model and Logistic Stochastic Model.}
+  University of Guanajuato's Junior Seminar. 
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Publications \faIcon{file-alt}}
+\begin{EntriesTable}
+\Year{2023}  &
+\Graciela, \Me, \Ulises \& \Rogelio.
+  A Gompertz Mixture Approach for Modeling the Evolution of the COVID-19 Dynamics.
+  \emph{Revista de Matemática: Teoría y Aplicaciones}.
+  \DOI{10.15517/rmta.v30i1.50927}.
+  \href{https://github.com/robervz22/code-A-Gompertz-mixture-approach-for-modeling-the-evolution-of-the-COVID-19-dynamics}{\faIcon{github} Repository}
+  \\
+\Year{2022}  &
+\Me, \Kapioma, \Chris, \Ivan, \Jorge \& \Ehyter.
+  Conditional Passing Times for Cramer-Lundberg Risk Model.
+  \emph{Jovenes en la Ciencia} \textit{16}. \href{https://www.jovenesenlaciencia.ugto.mx/index.php/jovenesenlaciencia/article/view/3659}{\faFilePdf Print}  
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Other Qualifications \faBullseye}
+\textbf{Languages:} \hspace{0.5pt} Spanish (Mother Tongue) | English (87/120 iBT TOEFL Score)
+
+\textbf{Programming:} \hspace{0.5 pt} \languageknowledge{LaTeX}{4} | \languageknowledge{Python}{4} | \languageknowledge{R}{3} | \languageknowledge{C/C++}{3}
+
+\textbf{Interests:} Stochastic Calculus, Statistical Modeling, Computational Statistics, Biomathematics.   
+% \begin{EntriesTable}
+% \Year{2021}  &
+%   \Santiago, \Me.
+%   Gradient-boosted equivalent sources.
+%   \emph{Geophysical Journal International}.
+%   \DOI{10.1093/gji/ggab297}.
+%   \GitHub{compgeolab/eql-gradient-boosted}
+%   \\
+% \Year{2020}  &
+%   \OA
+%   \Me, \Santiago, \Remi, \Hugo, \MattTurk, \Shapero, \Anderson, \Leeman.
+%   Pooch: A friend to fetch your data files.
+%   \emph{Journal of Open Source Software}.
+%   \DOI{10.21105/joss.01943}.
+%   \GitHub{fatiando/pooch}
+%   \\
+% \Year{2019}  &
+%   \OA
+%   \Paul, \Joaquim, \Me, \Remko, \Florian, \Walter, \Dongdong.
+%   The Generic Mapping Tools, Version 6.
+%   \emph{Geochemistry, Geophysics, Geosystems}.
+%   \DOI{10.1029/2019GC008515}.
+%   \\
+% \Year{2018}  &
+%   \OA
+%   \Me. Verde: Processing and gridding spatial data using Green's functions.
+%   \emph{Journal of Open Source Software}.
+%   \DOI{10.21105/joss.00957}.
+%   \GitHub{fatiando/verde}
+%   \\
+% \Year{2017}  &
+%   \Me, \Val.
+%   Fast non-linear gravity inversion in spherical coordinates with application
+%   to the South American Moho,
+%   \emph{Geophysical Journal International},
+%   \DOI{10.1093/gji/ggw390}.
+%   \GitHub{pinga-lab/paper-moho-inversion-tesseroids}
+%   \\
+% \Year{2016}  &
+%   \Me, \Val, \Carla.
+%   Tesseroids: forward modeling gravitational fields in spherical coordinates,
+%   \emph{Geophysics},
+%   \DOI{10.1190/geo2015-0204.1}.
+%   \GitHub{pinga-lab/paper-tesseroids}
+%   \\
+% \Year{2015}  &
+%   \OA
+%   \Bi, \Dai, \Val, \Me.
+%   Estimation of the total magnetization direction of approximately spherical
+%   bodies,
+%   \emph{Nonlinear Processes in Geophysics},
+%   \DOI{10.5194/npg-22-215-2015}.
+%   \GitHub{pinga-lab/Total-magnetization-of-spherical-bodies}
+%   \\
+% \Year{2013}  &
+%   \Figura, \Val, \Me, \Bi, \JB.
+%   Estimating the nature and the horizontal and vertical positions of 3D
+%   magnetic sources using Euler deconvolution,
+%   \emph{Geophysics},
+%   \DOI{10.1190/geo2012-0515.1}.
+% \end{EntriesTable}
+
+\end{document}
