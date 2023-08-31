@@ -8,9 +8,9 @@
 <!-- [leonardo_uieda_cv.pdf](https://www.leouieda.com/cv/leonardo_uieda_cv.pdf)-->
 
 ## Template
-Copyright <2023> <Modified BSD License>
+Copyright 2023 Modified BSD License
 <!-- You're free to reuse and modify this template under the terms of the BSD-->
-3-clause License (see `LICENSE.txt`).
+<!-- 3-clause License (see `LICENSE.txt`).-->
 
 To use it:
 
